@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>PharmaConnect Sénégal</title>
+  <meta name="description" content="Trouvez votre médicament et localisez les pharmacies partenaires au Sénégal.">
+  <meta name="theme-color" content="#0E1F17">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="PharmaConnect">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="preload" href="fonts/sora-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- symboles -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-logo" viewBox="0 0 40 40"><rect width="40" height="40" rx="9" fill="#00A86B"/><path d="M17 9.5h6a1.5 1.5 0 0 1 1.5 1.5v6h6a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-6v6A1.5 1.5 0 0 1 23 30.5h-6a1.5 1.5 0 0 1-1.5-1.5v-6h-6A1.5 1.5 0 0 1 8 21.5v-3a1.5 1.5 0 0 1 1.5-1.5h6v-6A1.5 1.5 0 0 1 17 9.5z" fill="#fff" transform="translate(0 0)"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3.5 11L12 4l8.5 7v8.5a1 1 0 0 1-1 1H15v-6H9v6H4.5a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pill" viewBox="0 0 24 24"><rect x="2.5" y="8.5" width="19" height="7" rx="3.5" transform="rotate(-40 12 12)" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9.2 9.2l5.6 5.6" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-store" viewBox="0 0 24 24"><path d="M4 20V9l8-5 8 5v11z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 10.5v5M9.5 13h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6 7-11.5a7 7 0 1 0-14 0C5 15 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.5" fill="currentColor"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2 2A15.5 15.5 0 0 1 4.5 5.5a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 7.5l8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3.5h7l4 4V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 12h6M9 16h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  </svg>
+
+  <header class="appbar">
+    <a class="logo" href="./" aria-label="PharmaConnect, accueil">
+      <svg><use href="#i-logo"/></svg>
+      <span class="wm">Pharma<i>Connect</i></span>
+    </a>
+    <button id="installBtn" class="install" hidden>Installer</button>
+  </header>
+
+  <main>
+    <!-- ACCUEIL -->
+    <section id="tab-home" class="tab active" aria-label="Accueil">
+      <div class="hero">
+        <span class="label">Disponible 24h/24</span>
+        <h1 class="h1">Trouvez votre <em>médicament</em></h1>
+        <p>Uploadez votre ordonnance et localisez instantanément les pharmacies partenaires qui disposent de votre médicament.</p>
+        <div class="field">
+          <svg><use href="#i-search"/></svg>
+          <input id="homeQ" type="search" placeholder="Nom du médicament…" autocomplete="off" enterkeyhint="search" aria-label="Nom du médicament">
+        </div>
+        <button id="homeGo" class="btn primary"><svg><use href="#i-search"/></svg>Rechercher un médicament</button>
+        <button data-go="pharmacies" class="btn pale">Voir les pharmacies</button>
+        <label class="btn outline" style="cursor:pointer">
+          <svg><use href="#i-doc"/></svg>Envoyer mon ordonnance
+          <input id="rx" type="file" accept="image/*,application/pdf" hidden>
+        </label>
+      </div>
+
+      <div class="stats" aria-label="Chiffres clés">
+        <div class="stat"><b>120+</b><span>Pharmacies</span></div>
+        <div class="stat"><b>50K+</b><span>Médicaments</span></div>
+        <div class="stat"><b>14</b><span>Régions</span></div>
+        <div class="stat wide"><b>24h</b><span>Disponible</span></div>
+      </div>
+
+      <div class="sec">
+        <h2 class="h2">Comment ça marche ?</h2>
+        <ol class="steps">
+          <li><span class="n">1</span><div><b>Recherchez votre médicament</b><span>Par nom ou ordonnance</span></div></li>
+          <li><span class="n">2</span><div><b>Localisez les pharmacies</b><span>Triées par proximité</span></div></li>
+          <li><span class="n">3</span><div><b>Récupérez en pharmacie</b><span>Prix en FCFA affiché</span></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- MÉDICAMENTS -->
+    <section id="tab-search" class="tab" aria-label="Rechercher un médicament">
+      <h2 class="h2">Trouver un médicament</h2>
+      <p class="lead">Recherchez par nom ou principe actif. Les pharmacies sont triées par disponibilité puis par proximité.</p>
+      <div class="field">
+        <svg><use href="#i-search"/></svg>
+        <input id="q" type="search" placeholder="Nom du médicament, principe actif…" autocomplete="off" autocapitalize="off" enterkeyhint="search" aria-label="Nom du médicament">
+        <button id="clearQ" class="x" aria-label="Effacer" hidden>×</button>
+      </div>
+      <div id="suggest" class="suggest" hidden></div>
+      <div class="chips" id="chips"></div>
+      <div class="loc">
+        <span id="locState">Position : Dakar centre (par défaut)</span>
+        <button id="locBtn" class="link">Utiliser ma position</button>
+      </div>
+      <div id="results" aria-live="polite"></div>
+    </section>
+
+    <!-- PHARMACIES -->
+    <section id="tab-pharmacies" class="tab" aria-label="Pharmacies partenaires">
+      <h2 class="h2">Pharmacies partenaires</h2>
+      <p class="lead">Triées par proximité.</p>
+      <div class="chips" id="phFilters">
+        <button class="chip on" data-f="all">Toutes</button>
+        <button class="chip" data-f="open">Ouvert maintenant</button>
+        <button class="chip" data-f="garde">Garde 24h</button>
+      </div>
+      <div id="pharmaList"></div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="tab-contact" class="tab" aria-label="Contact">
+      <h2 class="h2">Contact</h2>
+      <p class="lead">Une question ? Vous êtes pharmacien et souhaitez rejoindre le réseau ?</p>
+      <a class="btn dark" href="mailto:contact@pharmaconnect.sn?subject=Devenir%20partenaire%20PharmaConnect">Devenir partenaire</a>
+      <div class="card" style="margin-top:16px">
+        <a class="contact-row" href="mailto:contact@pharmaconnect.sn"><span class="ico"><svg><use href="#i-mail"/></svg></span><div><b>contact@pharmaconnect.sn</b><span>E-mail</span></div></a>
+        <a class="contact-row" href="tel:+221338000000"><span class="ico"><svg><use href="#i-phone"/></svg></span><div><b>+221 33 800 00 00</b><span>Téléphone</span></div></a>
+        <a class="contact-row" href="https://www.pharmaconnect.sn" target="_blank" rel="noopener"><span class="ico"><svg><use href="#i-globe"/></svg></span><div><b>www.pharmaconnect.sn</b><span>Site web</span></div></a>
+      </div>
+      <div class="note"><b>Version de démonstration</b>Les pharmacies, les stocks, les prix et les positions affichés sont des exemples. Ils seront remplacés par les données réelles des pharmacies partenaires.</div>
+      <div class="note" id="iosHint" hidden style="background:var(--pale);color:var(--deep)"><b>Installer sur iPhone</b>Dans Safari, touchez Partager puis « Sur l'écran d'accueil ».</div>
+      <div class="foot-dark">
+        <a class="logo" href="./"><svg><use href="#i-logo"/></svg><span class="wm">Pharma<i>Connect</i></span></a>
+        <p>La plateforme qui connecte patients et pharmacies au Sénégal</p>
+        <small>© 2025 PharmaConnect — Tous droits réservés</small>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" hidden role="status"></div>
+
+  <nav class="tabbar" aria-label="Navigation">
+    <button data-go="home" class="on"><svg><use href="#i-home"/></svg>Accueil</button>
+    <button data-go="search"><svg><use href="#i-pill"/></svg>Médicaments</button>
+    <button data-go="pharmacies"><svg><use href="#i-store"/></svg>Pharmacies</button>
+    <button data-go="contact"><svg><use href="#i-phone"/></svg>Contact</button>
+  </nav>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

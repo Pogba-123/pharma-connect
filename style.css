@@ -1,0 +1,190 @@
+/* ===== Charte graphique PharmaConnect =====
+   Titres : Sora (600/700/800) · Texte : Poppins (400/500/600)
+   Couleurs : #00A86B principal · #007A4D foncé · #0E1F17 profond · #E6F7F1 pâle · #F0FBF6 très pâle
+              #FFFFFF blanc · #9BB5AB gris vert · #EEF2F0 gris léger */
+@font-face { font-family: "Sora"; font-weight: 600; font-display: swap; src: url("fonts/sora-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Sora"; font-weight: 700; font-display: swap; src: url("fonts/sora-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Sora"; font-weight: 800; font-display: swap; src: url("fonts/sora-latin-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Poppins"; font-weight: 400; font-display: swap; src: url("fonts/poppins-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Poppins"; font-weight: 500; font-display: swap; src: url("fonts/poppins-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Poppins"; font-weight: 600; font-display: swap; src: url("fonts/poppins-latin-600-normal.woff2") format("woff2"); }
+
+:root {
+  --green: #00A86B;
+  --green-d: #007A4D;
+  --deep: #0E1F17;
+  --pale: #E6F7F1;
+  --xpale: #F0FBF6;
+  --white: #FFFFFF;
+  --gray: #9BB5AB;
+  --light: #EEF2F0;
+  --muted: #5B7266;       /* texte secondaire lisible, dérivé de #0E1F17 */
+  --warn: #8A5A00;
+  --warn-bg: #FFF3D6;
+  --r: 14px;              /* cartes */
+  --rb: 8px;              /* boutons / champs (≥ 4 px) */
+  --bar: 64px;
+  --shadow: 0 2px 14px rgba(14, 31, 23, .07);
+}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { margin: 0; }
+body {
+  font-family: "Poppins", system-ui, sans-serif;
+  background: var(--white);
+  color: var(--deep);
+  font-size: 14px;
+  min-height: 100vh;
+  padding-bottom: calc(var(--bar) + env(safe-area-inset-bottom) + 20px);
+}
+h1, h2, h3, .sora { font-family: "Sora", system-ui, sans-serif; margin: 0; }
+
+/* ----- barre du haut (logo sur fond sombre) ----- */
+.appbar {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: calc(env(safe-area-inset-top) + 12px) 18px 12px;
+  background: var(--deep);
+}
+.logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+.logo svg { width: 32px; height: 32px; flex: none; }
+.wm { font-family: "Sora", sans-serif; font-weight: 800; font-size: 19px; letter-spacing: -.3px; color: var(--deep); }
+.wm i { font-style: normal; color: var(--green); }
+.appbar .wm { color: var(--white); }
+.install {
+  border: 0; background: var(--green); color: #fff; font: 600 12px "Poppins", sans-serif;
+  padding: 9px 16px; border-radius: 99px; cursor: pointer;
+}
+
+main { max-width: 560px; margin: 0 auto; padding: 0 18px; }
+.tab { display: none; padding-top: 18px; }
+.tab.active { display: block; animation: up .3s ease; }
+@keyframes up { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+/* ----- typographie (échelle de la charte) ----- */
+.h1 { font-size: 34px; line-height: 1.12; font-weight: 800; letter-spacing: -.8px; }
+.h1 em, .green { font-style: normal; color: var(--green); }
+.h2 { font-size: 24px; font-weight: 700; letter-spacing: -.3px; }
+.h3 { font-size: 18px; font-weight: 600; }
+.body-l { font-size: 16px; line-height: 1.55; }
+.body-s { font-size: 13px; font-weight: 500; }
+.label { font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--green); }
+.muted { color: var(--muted); }
+.lead { color: var(--muted); font-size: 14.5px; line-height: 1.55; margin: 6px 0 16px; }
+
+/* ----- hero ----- */
+.hero { background: var(--deep); color: var(--white); border-radius: 22px; padding: 26px 20px 22px; }
+.hero .label { margin-bottom: 14px; display: block; }
+.hero .h1 { margin-bottom: 14px; }
+.hero p { color: #BFD3C9; margin: 0 0 20px; font-size: 15px; line-height: 1.55; }
+
+/* ----- boutons (charte) ----- */
+.btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%;
+  border: 1.5px solid transparent; border-radius: var(--rb); font: 600 14.5px "Poppins", sans-serif;
+  padding: 14px 18px; cursor: pointer; text-decoration: none; text-align: center;
+}
+.btn + .btn { margin-top: 10px; }
+.btn svg { width: 18px; height: 18px; }
+.btn.primary { background: var(--green); color: #fff; }
+.btn.primary:active { background: var(--green-d); }
+.btn.pale { background: var(--pale); color: var(--green-d); }
+.btn.outline { background: transparent; color: var(--green-d); border-color: var(--green); }
+.btn.dark { background: var(--deep); color: #fff; }
+.btn.sm { width: auto; padding: 9px 16px; font-size: 12.5px; display: inline-flex; margin: 0; }
+.hero .btn.outline { color: #fff; border-color: rgba(255, 255, 255, .35); }
+
+/* ----- champs ----- */
+.field {
+  display: flex; align-items: center; gap: 10px; background: var(--white);
+  border: 1.5px solid var(--light); border-radius: var(--rb); padding: 0 14px;
+}
+.field:focus-within { border-color: var(--green); }
+.field svg { width: 20px; height: 20px; color: var(--green); flex: none; }
+.field input {
+  flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--deep);
+  font: 400 15px "Poppins", sans-serif; padding: 14px 0;
+}
+.field input::placeholder { color: var(--gray); }
+.field input::-webkit-search-cancel-button { display: none; }
+.field .x { border: 0; background: var(--pale); color: var(--green-d); width: 26px; height: 26px; border-radius: 50%; font-size: 17px; line-height: 1; cursor: pointer; }
+.hero .field { border-color: transparent; }
+.hero .btn { margin-top: 10px; }
+.suggest { background: var(--white); border-radius: var(--rb); margin-top: 6px; overflow: hidden; box-shadow: 0 10px 30px rgba(14, 31, 23, .18); border: 1px solid var(--light); }
+.suggest button { display: block; width: 100%; text-align: left; border: 0; background: none; font: 500 14px "Poppins", sans-serif; color: var(--deep); padding: 12px 16px; border-bottom: 1px solid var(--light); cursor: pointer; }
+.suggest button:last-child { border: 0; }
+.suggest small { display: block; font-weight: 400; color: var(--muted); font-size: 12px; }
+
+/* ----- badges ----- */
+.badge { display: inline-flex; align-items: center; font: 600 11.5px "Poppins", sans-serif; padding: 4px 11px; border-radius: 99px; white-space: nowrap; }
+.badge.ok { background: var(--pale); color: var(--green-d); }
+.badge.order { background: var(--warn-bg); color: var(--warn); }
+.badge.out, .badge.closed { background: var(--light); color: var(--muted); }
+.badge.partner { background: var(--deep); color: #fff; }
+.badge.garde { background: transparent; color: var(--green-d); border: 1.5px solid var(--green); }
+
+/* ----- puces ----- */
+.chips { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0; }
+.chip { border: 1.5px solid var(--light); background: var(--white); color: var(--green-d); font: 500 12.5px "Poppins", sans-serif; padding: 8px 14px; border-radius: 99px; cursor: pointer; }
+.chip.on { background: var(--green); border-color: var(--green); color: #fff; }
+
+/* ----- statistiques ----- */
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 22px 0 10px; }
+.stat { background: var(--xpale); border: 1px solid var(--pale); border-radius: var(--r); padding: 14px 8px; text-align: center; }
+.stat b { display: block; font: 800 22px "Sora", sans-serif; color: var(--green-d); }
+.stat span { font-size: 11.5px; color: var(--muted); }
+.stat.wide { grid-column: 1 / -1; background: var(--pale); }
+
+/* ----- étapes ----- */
+.steps { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 14px; }
+.steps li { display: flex; gap: 14px; align-items: center; }
+.steps .n { width: 34px; height: 34px; border-radius: 50%; background: var(--green); color: #fff; font: 700 14px "Sora", sans-serif; display: grid; place-items: center; flex: none; }
+.steps b { display: block; font: 600 14.5px "Poppins", sans-serif; }
+.steps span { font-size: 12.5px; color: var(--muted); }
+
+/* ----- carte pharmacie ----- */
+.card { background: var(--white); border: 1px solid var(--light); border-radius: var(--r); padding: 16px; margin-bottom: 12px; box-shadow: var(--shadow); }
+.ph { display: flex; gap: 13px; animation: up .3s ease both; }
+.ico { width: 44px; height: 44px; border-radius: 50%; background: var(--pale); color: var(--green); display: grid; place-items: center; flex: none; }
+.ico svg { width: 22px; height: 22px; }
+.ph .body { flex: 1; min-width: 0; }
+.ph .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+.ph .t { font: 700 15px "Sora", sans-serif; line-height: 1.25; }
+.ph .m { font-size: 12.5px; color: var(--muted); margin-top: 4px; display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+.ph .m svg { width: 14px; height: 14px; color: var(--green); }
+.ph .foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+.price { font: 800 16px "Sora", sans-serif; color: var(--green-d); }
+.price small { font: 500 11px "Poppins", sans-serif; color: var(--muted); }
+.tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+
+.res-title { font-size: 13.5px; color: var(--muted); margin: 16px 0 10px; }
+.res-title b { color: var(--deep); font-weight: 600; }
+.loc { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 12px; color: var(--muted); margin: 10px 0 4px; }
+.link { border: 0; background: none; color: var(--green-d); font: 600 12.5px "Poppins", sans-serif; cursor: pointer; padding: 6px 0; white-space: nowrap; }
+.empty { text-align: center; color: var(--muted); padding: 26px 8px; }
+.note { background: var(--warn-bg); border-radius: var(--r); padding: 14px 16px; margin: 16px 0; font-size: 13px; line-height: 1.5; color: #5a3d00; }
+.note b { display: block; margin-bottom: 2px; }
+
+.sec { margin-top: 26px; }
+.contact-row { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--light); text-decoration: none; color: var(--deep); }
+.contact-row:last-of-type { border: 0; }
+.contact-row b { display: block; font-weight: 600; font-size: 14px; }
+.contact-row span { font-size: 12.5px; color: var(--muted); }
+.foot-dark { background: var(--deep); color: #BFD3C9; border-radius: 22px; padding: 22px 20px; margin-top: 22px; }
+.foot-dark .wm { color: #fff; }
+.foot-dark p { margin: 10px 0 0; font-size: 13px; line-height: 1.5; }
+.foot-dark small { display: block; margin-top: 14px; color: #6f8a7d; font-size: 11px; }
+.toast { position: fixed; left: 18px; right: 18px; bottom: calc(var(--bar) + env(safe-area-inset-bottom) + 14px); z-index: 20; background: var(--deep); color: #fff; padding: 13px 16px; border-radius: var(--rb); font-size: 13px; box-shadow: 0 10px 30px rgba(0,0,0,.25); max-width: 524px; margin: 0 auto; }
+
+/* ----- barre de navigation ----- */
+.tabbar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; display: flex;
+  height: calc(var(--bar) + env(safe-area-inset-bottom)); padding-bottom: env(safe-area-inset-bottom);
+  background: var(--white); border-top: 1px solid var(--light);
+}
+.tabbar button { flex: 1; border: 0; background: none; font: 500 11px "Poppins", sans-serif; color: var(--gray); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; cursor: pointer; }
+.tabbar button svg { width: 23px; height: 23px; }
+.tabbar button.on { color: var(--green-d); font-weight: 600; }
+.tabbar button.on svg { color: var(--green); }
+[hidden] { display: none !important; }
+@media (prefers-reduced-motion: reduce) { .tab.active, .ph { animation: none; } }
+#results { scroll-margin-top: 80px; }
